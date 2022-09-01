@@ -24,11 +24,14 @@ export function SignUp() {
     const { signUp } = useAuth();
 
     const handleSignUp = () => {
-        if(!email | !emailConf | !senha) {
+        if(!nome | !email | !emailConf | !senha | !phone | !cpf | !city | !uf | !cep) {
             setError("Preencha todos os campos")
             return;
         } else if(email !== emailConf) {
             setError("Os e-mails não são iguais")
+            return;
+        } else if(cpf.length !== 11 ) {
+            setError("CPF incorreto")
             return;
         }
 
@@ -40,7 +43,7 @@ export function SignUp() {
         }
 
         alert("Usuário cadastrado com sucesso!")
-        navigate("/")
+        navigate("/home")
     }
 
     return(
@@ -111,9 +114,8 @@ export function SignUp() {
                     onClick={handleSignUp}
                 />
                 <LabelSignUp>
-                    Já tem uma conta?
                     <Strong>
-                        <Link to="/">&nbsp;Entre</Link>
+                        <Link to="/home">Cancelar</Link>
                     </Strong>
                 </LabelSignUp>
             </Content>

@@ -54,3 +54,16 @@ export const Table = styled.table`
       }
     }
 `
+
+export const Strong = styled.strong`
+    cursor: pointer;
+
+    a {
+        text-decoration: none;
+        color: #676767;
+
+        &:hover {
+        color: #fff;
+    }
+    }
+`

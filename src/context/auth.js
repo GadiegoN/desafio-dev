@@ -6,6 +6,19 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState();
 
     useEffect(() => {
+
+        let admUser = [{ 
+            nome: "teste user",
+            email: "teste@teste.com",
+            password: "123456",
+            phone: "123456789",
+            cpf: "12345678900",
+            city: "cidade teste",
+            uf: "testada",
+            cep: "00111999"
+        }];
+        localStorage.setItem("user_db", JSON.stringify(admUser));
+
         const userToken = localStorage.getItem("user_token");
         const usersStorage = localStorage.getItem("user_db");
 
@@ -59,13 +72,29 @@ export const AuthProvider = ({ children }) => {
         return;
     }
 
+    const editUser = () => {
+        /* Não consegui concluir */ 
+    }
+
     const signOut = () => {
         setUser(null);
         localStorage.removeItem("user_token");
     }
 
+    const removeUser = (email) => {
+        const usersStorage = JSON.parse(localStorage.getItem("user_db"));
+
+        const newRemoveUser = usersStorage?.filter((user) => user.email === email);
+
+        setUser(newRemoveUser);
+        document.location.reload(true);
+        return;
+    }
+
+
+
     return (
-        <AuthContext.Provider value={{ user, signed: !!user, signIn, signUp, signOut }}>
+        <AuthContext.Provider value={{ user, signed: !!user, signIn, signUp, signOut, removeUser, editUser }}>
             {children}
         </AuthContext.Provider> 
     )

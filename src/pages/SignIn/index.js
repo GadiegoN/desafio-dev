@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { InputComponet } from '../../components/Input';
 import { ButtonComponet } from '../../components/Button';
 
-import { Container, Content, Label, LabelError, LabelSignUp, Strong } from './style';
+import { Container, Content, Label, LabelError } from './style';
 
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth'
 
 export function SignIn() {
@@ -52,12 +52,6 @@ export function SignIn() {
                 Text="Entrar"
                 onClick={handleLogin}
             />
-            <LabelSignUp>
-                Não tem uma conta?
-                <Strong>
-                    <Link to="/signup">&nbsp;Registre-se</Link>
-                </Strong>
-            </LabelSignUp>
            </Content>
         </Container>
     )
